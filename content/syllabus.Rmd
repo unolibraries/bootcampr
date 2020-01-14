@@ -42,11 +42,11 @@ I strongly recommend getting ahold of the following books. The online or draft v
 
 # Software
 
-We will do all of our visualization work in this class using the programming language [R](https://cran.r-project.org/). We will use [RStudio](https://www.rstudio.com/) to manage our code and projects. R and R Studio are widely used tools for data analysis in academia and industry.
+We will do all of our visualization work in this class using the programming language [R](https://cran.r-project.org/). We will use [RStudio](https://www.rstudio.com/) to manage our code and projects. R and RStudio are widely used tools for data analysis in academia and industry.
 
 *Come to the first session on February 11 if you wish to have help completing the following.*
 
-You will need to install some software first. Here is what to do:
+You will need to install some software first. You can consult the [orientation material](https://jasonheppler.org/courses/bootcampr.2020/reading/01-reading/), but in brief here's what to do: 
 
 1. Get the most recent version of R. R is free and available for Windows, Mac, and Linux operating systems. Download^[`cloud.r-project.org`] the version of R compatible with your operating system. If you are running Windows or MacOS, you should choose one of the *precompiled binary* distributions (i.e., ready-to-run applications) linked at the top of the R Project's webpage. 
 2. Once R is installed, download and install R Studio.^[`rstudio.com`] R Studio is an "Integrated Development Environment", or IDE. This means it is a front-end for R that makes it much easier to work with. R Studio is also free, and available for Windows, Mac, and Linux platforms.

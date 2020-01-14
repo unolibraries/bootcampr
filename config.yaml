@@ -1,6 +1,6 @@
 baseURL: "https://jasonheppler.org/courses/bootcampr.2020/"
 languageCode: en-us
-title: "Bootcampr: An Introduction to R"
+title: "BootcampR: An Introduction to R"
 theme: "kjh-tufte-hugo"
 googleAnalytics: ""
 ignoreFiles:
@@ -36,7 +36,7 @@ params:
     email: jheppler@unomaha.edu
     url: "https://jasonheppler.org"
     twitter: jaheppler
-    github: unolibraries
+    github: unolibraries/bootcampr
     office: "Criss 214"
   course:
     number:

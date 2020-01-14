@@ -60,42 +60,42 @@ Like many programming languages, R also comes with various operators.
 
 Operator        Description
 --------        -----------
-+               Adds two vectors
--               Subtracts the second vector from the first
-*               Multiplies both vectors
-/               Divides the first vector with the second
-%%              Give the remainder of the first vector with the second
-%/%             The result of division of first vector with second (quotient)
-^               The first vector raised to the exponent of the second vector
+`+`             Adds two vectors
+`-`             Subtracts the second vector from the first
+`*`             Multiplies both vectors
+`/`             Divides the first vector with the second
+`%%`            Give the remainder of the first vector with the second
+`%/%`           The result of division of first vector with second (quotient)
+`^`             The first vector raised to the exponent of the second vector
 
 ### Relational Operators
 
 Operator        Description
 --------        -----------
->               Checks if each element of the first vector is greater than the corresponding element of the second vector
-<               Checks if each element of the first vector is less than the corresonding element of the second vector
-==              Checks if each element of the first vector **is equal** to the corresponding element of the second vector
-<=              Checks if each element of the first vector is **less than or equal to** the corresponding element of the second vector
->=              Checks if each element of the first vector is **greater than or equal to** the corresponding element of the second vector
-!=              Checks if each element of the first vector **is unequal** to the corresponding element of the second vector. 
+`>`             Checks if each element of the first vector is greater than the corresponding element of the second vector
+`<`             Checks if each element of the first vector is less than the corresonding element of the second vector
+`==`            Checks if each element of the first vector **is equal** to the corresponding element of the second vector
+`<=`            Checks if each element of the first vector is **less than or equal to** the corresponding element of the second vector
+`>=`            Checks if each element of the first vector is **greater than or equal to** the corresponding element of the second vector
+`!=`            Checks if each element of the first vector **is unequal** to the corresponding element of the second vector. 
 
 ### Logical Operators
 
 Operator        Description
 --------        -----------
-&               This is a logical **AND** operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if both the elements are TRUE.	
-|               This is a logical **OR** operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if one the elements is TRUE.
-!               This is a logical **NOT** operator. Takes each element of the vector and gives the opposite logical value. 
-&&              A logical **AND** operator. Takes first element of both the vectors and gives the TRUE only if both are TRUE.
-||              A logical **OR** operator. Takes first element of both the vectors and gives the TRUE if one of them is TRUE.
+`&`             This is a logical **AND** operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if both the elements are TRUE.	
+`|`             This is a logical **OR** operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if one the elements is TRUE.
+`!`             This is a logical **NOT** operator. Takes each element of the vector and gives the opposite logical value. 
+`&&`            A logical **AND** operator. Takes first element of both the vectors and gives the TRUE only if both are TRUE.
+`||`            A logical **OR** operator. Takes first element of both the vectors and gives the TRUE if one of them is TRUE.
 
 ### Miscellanous Operators
 
 Operator        Description
 --------        -----------
-:               Colon operator. Creates a series of numbers in sequence for a vector.
-%in%            This operator is used to identify if an element belongs to a vector.
-%*%             This operator is used to multiply a matrix with its transpose.
+`:`             Colon operator. Creates a series of numbers in sequence for a vector.
+`%in%`          This operator is used to identify if an element belongs to a vector.
+`%*%`           This operator is used to multiply a matrix with its transpose.
 
 Try out the following from your RStudio console: 
 
@@ -193,7 +193,7 @@ print(B)
 4. Everything in R is an **object**, even functions. Objects can be manipulated in many ways, such as applying a summary function to a variety of object types. Try the following: 
 
 ```{r}
-summary(mtcars[, 3:5]) # sumary look at a df object
+summary(mtcars[, 3:5]) # summary look at a df object
 ```
 
 ```{r}
