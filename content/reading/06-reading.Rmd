@@ -1,0 +1,8 @@
+---
+title: "Making Maps"
+date: "2020-03-17"
+---
+
+## Objective
+
+This workshop introduces methods for making maps in R. Leave ArcGIS behind and learn how you can use the sp, ggplot, ggmaps, and related libraries for doing spatial analysis and visualization with R. 

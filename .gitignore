@@ -9,3 +9,4 @@ static/**/*.zip
 *_cache/
 static/rmarkdown-libs/
 content/**/*.html
+_planning/

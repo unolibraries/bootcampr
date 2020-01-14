@@ -1,0 +1,46 @@
+---
+title: "R Basics / Intro to the Tidyverse"
+date: "2020-02-18"
+---
+
+## Objective
+
+Come learn the basics of base R and methods of the Tidyverse library. This workshop introduces general concepts of the R language how to do basic operations in R, as well as a quick introduction to the tidyverse library that will be used for the remainder of the workshop series. 
+
+## Overview
+
+R is an open source and freely available language for statistical computing and graphics, available across all major computer platforms. R is actively developed, typically releasing two major releases per year and dozens of releases that add new packages and features. R can also be extended with *packages* that contain data, code, and documentation that adds new functionality to the language.
+
+Most of the work we'll be doing will be done from **RStudio**, an integrated development enviroment that makes managing scripts, console outputs, plots, and enviroment variables much easier than using R from the terminal. 
+
+For a bit of history: R is a flavor of the **[S](https://en.wikipedia.org/wiki/S_%28programming_language%29)** computer language, which was first developed by John Chambers at Bell Labs in the late 1970s. The intention behind S, according to Chambers, was that "[w]e wanted users to be able to begin in an interactive environment, where they did not consciously think of themselves as programming. Then as their needs became clearer and their sophistication increased, they should be able to slide gradually into programming, when the language and system aspects would become more important."
+
+In 1991, Ross Ihaka and Robert Gentleman created **[R](https://en.wikipedia.org/wiki/R_(programming_language))** (named after their first initials), and the language was made public in 1993. As an open source language, R can be installed on any machine without licensing or agreements required. The language is incredibly flexible and continues to be in active development, improving from the work of developers, academics, and professionals. 
+
+There are a lot of advantages to using R:
+
+- it's platform agnostic: Linux, macOS, PC, server, desktop, etc. 
+- R can output results in a variety of formats
+- R plays nicely with data from Stata, SPSS, SAS, and others
+- R can check work, produce outputs, and visualize results (including from other programs)
+- R is becoming more prevalent in statistics, machine learning, and other courses and industries. 
+
+There are also some disadvantages to using R: 
+
+- the core of R is based on a forty year old programming language
+- R may not be the idea solution to all problems
+- R can run slower than compiled language 
+- R is not a software package, but a programming language. The learning curve can be steep.
+
+## Readings
+
+1. Kieran Healy, "[Using R with RStudio](http://socviz.co/gettingstarted.html#use-r-with-rstudio)" and "[Things to know about R](http://socviz.co/gettingstarted.html#things-to-know-about-r)" *Data Visualization* (Princeton University Press, 2019).
+2. Hadley Wickham, "[Introduction](https://r4ds.had.co.nz/introduction.html)," *R for Data Science* (O'Reilly, 2017).
+3. Look over the [Tidyverse](https://www.tidyverse.org) to get a sense of what the library offers R users.
+
+## Other references
+
+- [An R vocabulary for starting out](http://adv-r.had.co.nz/Vocabulary.html)
+- [Quick R: Getting Started](https://www.statmethods.net)
+- [Hadley Wickham's R style guide](http://adv-r.had.co.nz/Style.html)
+

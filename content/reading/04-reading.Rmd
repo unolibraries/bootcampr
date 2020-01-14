@@ -1,0 +1,8 @@
+---
+title: "Making Graphs"
+date: "2020-03-03"
+---
+
+## Objective
+
+The visualization of data allows us to communicate effectively, spot patterns in large datasets, or simply look for issues with the underlying data. This workshop introduces best practices and principles for data visualization, and works hands-on with the ggplot library from the tidyverse. 

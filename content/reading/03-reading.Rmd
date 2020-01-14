@@ -1,0 +1,10 @@
+---
+title: "Spark Joy with Data"
+date: "2020-02-25"
+---
+
+## Objective
+
+Do you work with data that often needs cleaning up? Do you have a need to summarize or aggregate data within one source, or among multiple sources? This workshop introduces the dplyr and tidyr methods from the tidyverse library. 
+
+*More to come.*

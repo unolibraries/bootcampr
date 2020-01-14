@@ -5,59 +5,44 @@ lessons:
     header: true
     
   - title: "Orientation and Setup"
-    date: "August 21st, 23rd"
+    date: "February 11"
+    reading: "01-reading"
 
-  - title: "Ways of Seeing / Expressing Yourself with R"
-    date: "August 28th / 30th"
+  - title: "R Basics / Intro to the Tidyverse"
+    date: "February 18"
+    reading: "02-reading"
+    exercise: "02-exercises"
 
-  - title: "Looking at Data / Working Tidily with Data"
-    date: "September 4th / 6th"
+  - title: "Spark Joy with Data (Tidy data in R)"
+    date: "February 25"
+    reading: "03-reading" 
+    worksheet: "https://github.com/unolibraries/workshops/blob/master/data-manipulation-r/02-data-manipulation-worksheet.Rmd"
+    exercise: 
+    slides:
 
-  - title: "Making Graphs / Showing the Right Numbers"    
-    date: "September 11th / 13th"
+  - title: "Making Graphs"    
+    date: "March 3"
+    reading: "04-reading"
+    worksheet: "https://github.com/unolibraries/workshops/blob/master/intro-data-viz/r-data-viz-worksheet.Rmd"
+    exercise: 
+    slides:
 
-  - title: "(No class this week)"
-    date: "September 18th / 20th"
-    assignment: "01-problem-set"
-
-  - title: "Groups, Kinds, and Comparisons / Working with Tables"    
-    date: "September 25th / 27th"
-    assignment: "02-problem-set"    
-
-  - title: "Time, Trends, and Flows / Expanding your Visual Vocabulary"    
-    date: "October 2nd / 4th"
-
-  - title: "Populations and Distributions / Beeswarms, Pyramids, and Lexis Surfaces"
-    date: "October 9th / 11th"
-    assignment: "03-problem-set"
+  - title: "Visualizing Networks"
+    date: "March 10"
+    reading: "05-reading"
+    worksheet:
+    exercise: 
+    slides:
+  
+  - title: "Making Maps"
+    date: "March 17"
+    reading: "06-reading"
+    exercise: 
+  
+  - title: "Spring Vacation Mar. 22-29 (no instruction)"
+    date: "March 24"
     
-  - title: "Trees, Ties, Relations / Visualizing Networks and Hierarchies"
-    date: "October 16th / 18th"
-
-  - title: "Midterm Workshop / Midterm Presentations"
-    date: "October 23rd / 25th"
-    class: "11-class"
-
-  - title: "Space and Place / Maps I"    
-    date: "October 30th / November 1st"
-    assignment: "04-problem-set"      
-
-    
-  - title: "Nations and States / Maps II"
-    date: "November 6th / 8th"
-    
-  - title: "Design Thinking / Refining Plots"
-    date: "November 13th / 15th"
-
-  - title: "Representing and Intervening"
-    date: "November 20th / 22nd"
-
-  - title: "Thanksgiving (No Class)"
-    date: "November 27th / 29th"
-
-  - title: "Final Projects"
-    date: "December 4th / 6th"
-
-
-
-    
+  - title: "Clustering and Classifying"
+    date: "March 31"
+    reading: "07-reading"
+    exercise: 

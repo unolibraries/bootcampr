@@ -1,0 +1,510 @@
+---
+title: "Exercises: R Basics / Intro to the Tidyverse"
+date: "2020-02-18"
+editor_options: 
+  chunk_output_type: console
+---
+
+Open up RStudio and let's work through a few commands. Most of the below introduces you to base R commands. We'll save the more advanced Tidyverse stuff for the remainder of the workshop.
+
+## Getting help
+
+R can be picky about how its used, but it offers a few things to help you through issues. Follow along below and try inputting the following into your own RStudio to get a feel of how the language works. 
+
+R can often be a very self-guided language, and tries to offer you tools to help you out. Try typing `?summary` in the console -- what do you get? 
+
+Try typing `??regression` -- what do you get? 
+
+Of course, the R Help Documentation may not always be the best source for information or solving tricky problems -- for that, don't hestiate to turn to Google or Stack Overflow. You'll often find answers by looking there. (Tip: searching for just the letter R won't be very helpful, so try adding "in R" or "rstats" to your queries.)
+
+## The data frame
+
+A dataframe is a lot like a spreadsheet and is the central feature of data analysis in R. Dataframes, like spreadsheets, can hold all sorts of information: names, numbers, coordinates, matrices, and so on. The dataframe becomes your central method for storing and manipulating data in R. By arranging data into a rectangular dataframe, we can perform operations on entire rows or entire columns -- and while that might sound limiting, it's actually quite powerful. 
+
+In your console, type:
+
+```{r}
+data(mtcars)
+mtcars
+```
+
+The console will output the contents of the dataframe for you. Now, try typing `View(mtcars)`. What do you get?
+
+## R is a calculator
+
+R was designed as a statistical computing environment, and thus is very good as a calculator. Try inputting the following into your console: 
+
+```{r}
+2 + 2 # add numbers
+```
+
+```{r}
+2 * pi # multiply by constants
+```
+
+```{r}
+4 + runif(1, min = 0, max = 1) # add a random variable
+```
+
+```{r}
+5^5 # powers
+```
+
+```{r}
+sqrt(4^4) # functions, like square root
+```
+
+Like many programming languages, R also comes with various operators.
+
+### Arithmetic Operators
+
+Operator        Description
+--------        -----------
++               Adds two vectors
+-               Subtracts the second vector from the first
+*               Multiplies both vectors
+/               Divides the first vector with the second
+%%              Give the remainder of the first vector with the second
+%/%             The result of division of first vector with second (quotient)
+^               The first vector raised to the exponent of the second vector
+
+### Relational Operators
+
+Operator        Description
+--------        -----------
+>               Checks if each element of the first vector is greater than the corresponding element of the second vector
+<               Checks if each element of the first vector is less than the corresonding element of the second vector
+==              Checks if each element of the first vector **is equal** to the corresponding element of the second vector
+<=              Checks if each element of the first vector is **less than or equal to** the corresponding element of the second vector
+>=              Checks if each element of the first vector is **greater than or equal to** the corresponding element of the second vector
+!=              Checks if each element of the first vector **is unequal** to the corresponding element of the second vector. 
+
+### Logical Operators
+
+Operator        Description
+--------        -----------
+&               This is a logical **AND** operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if both the elements are TRUE.	
+|               This is a logical **OR** operator. It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if one the elements is TRUE.
+!               This is a logical **NOT** operator. Takes each element of the vector and gives the opposite logical value. 
+&&              A logical **AND** operator. Takes first element of both the vectors and gives the TRUE only if both are TRUE.
+||              A logical **OR** operator. Takes first element of both the vectors and gives the TRUE if one of them is TRUE.
+
+### Miscellanous Operators
+
+Operator        Description
+--------        -----------
+:               Colon operator. Creates a series of numbers in sequence for a vector.
+%in%            This operator is used to identify if an element belongs to a vector.
+%*%             This operator is used to multiply a matrix with its transpose.
+
+Try out the following from your RStudio console: 
+
+```{r}
+2/2
+```
+
+```{r}
+2 * 2
+```
+
+```{r}
+2^2
+```
+
+```{r}
+2 == 2
+```
+
+```{r}
+23%/%2
+```
+
+```{r}
+23%%2
+```
+
+## Other symbols
+
+The `<-` is the assignment operator, created by typing `<` and `-`. We use the assignment operator for storing environment variables like numbers, strings, or entire dataframes. In RStudio, the keyboard shortcut for creating the assigment operator is:
+
+- macOS: `Option` + `-`
+- Windows and Linux: `Alt` + `-`
+
+Try the following: 
+
+```{r}
+foo <- 3
+foo
+```
+
+```{r}
+numrange <- 1:10
+numrange
+```
+
+```{r}
+# Comments in R are denoted by the hash symbol. These are things we want to prevent R from executing. 
+
+# Often comments are used for explaining what parts of code are doing, or might be used during troubleshooting to turn off and on parts of the code. 
+```
+
+## Advanced R math
+
+R can support advanced mathematical features and expressions, and can take integrals and derivatives and express complex functions. One great feature of R is it can generate distributions very easily. Try, for example: 
+
+```{r}
+rnorm(100)
+```
+
+```{r}
+hist(rnorm(10000))
+```
+
+## Using the workspace 
+
+The workspace stores all of your assignments. For example, we can store the number 5 and the number 3 to variables: 
+
+```{r}
+x <- 5
+x
+```
+
+```{r}
+z <- 3
+z
+```
+
+If I want to pull up a list of variables in my workspace from the console, I can type `ls()`, or `ls.str()` to see a description of the variables. I can also remove variables with `rm()`. 
+
+## R as a language
+
+Some helpful things to keep in mind:
+
+1. Case sensitivity matters. `a <- 3` and `A <- 4` are different. 
+2. `c` is your friend. `c` stands for concatenate, and allows a vector to have multiple elements. If you ever need two elements in a vector, wrap it up in `c`, but remember that the objects in a vector must be of the same type. 
+
+```{r}
+B <- c(3,4)
+print(B)
+```
+
+3. R is inconsistent in naming conventions. Some functions are in `camelCase`, some `are.dot.separated` and others `use_underscores`. Doing your work in RStudio might help alleviate some of this since it offers autocomplete capabilities as you type. 
+
+4. Everything in R is an **object**, even functions. Objects can be manipulated in many ways, such as applying a summary function to a variety of object types. Try the following: 
+
+```{r}
+summary(mtcars[, 3:5]) # sumary look at a df object
+```
+
+```{r}
+summary(mtcars$mpg)
+```
+
+5. R can help you in working with data. Try the following: 
+
+```{r}
+length(unique(mtcars$mpg))
+```
+
+```{r}
+uniqgear <- length(unique(mtcars$gear))
+uniqgear
+```
+
+```{r}
+big <- c(9, 12, 15, 25)
+small <- c(9, 3, 4, 2)
+
+# Returns a vector of logical values
+big > small
+```
+
+```{r}
+big == small
+
+# Warning: don't do this -- it reassigns big to small
+# big = small
+```
+
+```{r}
+# Returns values where the logical operator is true
+big[big > small]
+```
+
+```{r}
+# Returns whether each value to the left can be matched with
+# the one on the right.
+big[small %in% big]
+```
+
+```{r}
+bar <- c("a", NA, 4, 9, 8.7)
+
+# The ! operator negates a logical value. Here, we can look for
+# the non-NA value in the vector.
+!is.na(bar)
+```
+
+```{r}
+# We can ask R what kind of class a vector is.
+# What does this return? Why do you think it returns what it does?
+class(bar)
+```
+
+```{r}
+f <- bar[!is.na(bar)]
+f
+```
+
+```{r}
+class(f)
+```
+
+Compare the results below with the `&` and `|` operators. 
+
+```{r}
+zap <- c(1, 4, 8, 2, 9, 11)
+zap[zap > 2 | zap < 8]
+```
+
+```{r}
+zap[zap > 2 & zap < 8]
+```
+
+## Data modes and structures in R
+
+R can tell us what a data type is, typically a **numeric** (numbers), **character** (characters with no numeric meaning), or **logical** (TRUE or FALSE). 
+
+```{r}
+is.numeric(B)
+```
+
+```{r}
+class(B)
+```
+
+```{r}
+print(B)
+```
+
+```{r}
+g <- c("one", "two", "three")
+print(g)
+```
+
+```{r}
+is.numeric(g)
+```
+
+```{r}
+class(g)
+```
+
+```{r}
+logicals <- c(TRUE, TRUE, TRUE, FALSE, FALSE, TRUE)
+is.numeric(logicals)
+```
+
+```{r}
+is.character(logicals)
+```
+
+```{r}
+is.logical(logicals)
+```
+
+R also has a number of basic data structures as well as specialized formats. **Vectors** are the basic data class in R, and can be thought of as a single column of data. **Matrices and arrays** are rows and columsn of all the same data mode. **Dataframes** are rows and columns arranged in a rectangle where columns can represent different data types. **Lists** are arbitrary combinations of disparate object types in R.
+
+## Factors
+
+Factors are a special, and sometimes frustrating, data type in R. Factors are often categorical data, but their order in a dataframe can be important for plots, regressions, outputs, and more. 
+
+```{r}
+myfactor <- factor(c("basic", "proficient", "advanced", "minimal"))
+class(myfactor)
+```
+
+```{r}
+# What order are factors in?
+myfactor 
+```
+
+Fixing the order of factors means providing an explanation of the order of the levels. 
+
+```{r}
+myfactor_ordered <- ordered(myfactor, levels = c("minimal", "basic", "proficient", "advanced"))
+myfactor_ordered
+```
+
+```{r}
+summary(myfactor_ordered)
+```
+
+We can reclassify factors but doing so can be tricky. All factors have an underlying numeric structure to contend with. 
+
+```{r}
+class(myfactor_ordered)
+```
+
+```{r}
+unclass(myfactor_ordered)
+```
+
+```{r}
+unfactored <- unclass(myfactor_ordered)
+
+# The output here is incorrect: minimal assigned a 2 and basic a 3, but why? 
+unfactored
+```
+
+The better way to unclassify factors is to convert them to characters first. 
+
+```{r}
+unfactor <- function(x) {
+  x <- as.character(x)
+  x
+}
+
+unfactor(myfactor_ordered)
+```
+
+## Dates
+
+R has a built-in way to handle dates, but see also the `lubridate` package from the tidyverse for more advanced functionality including date conversions and mathematical operations. 
+
+```{r}
+mydate <- as.Date("1/13/2020", format = "%m/%d/%Y")
+class(mydate)
+```
+
+```{r}
+# What day of the week is this?
+weekdays(mydate)
+```
+
+```{r}
+# What is thirty days from now? 
+mydate + 30
+```
+
+```{r}
+# We can also parse other date formats, and can add or subtract date formats. 
+mydate2 <- as.Date("11-3-20", format = "%d-%m-%y")
+mydate2
+```
+
+```{r}
+mydate2 - mydate
+```
+
+Note that R converts all date formats to numeric values, just like Excel. The origin date in R is January 1, 1970. Try the following: 
+
+```{r}
+as.numeric(mydate)
+# returns the number of days since 1-1-1970
+```
+
+You can also set your own origin date. 
+
+```{r}
+as.Date(15, origin = "2010-1-1")
+```
+
+## Matrices
+
+Matrices are combinations of vectors of the same length and data type. Try the following:
+
+```{r}
+mymatrix <- matrix(1:36, nrow = 6, ncol = 6)
+mymatrix
+```
+
+Try the following and see if you can surmise what's happening. 
+
+```{r}
+rownames(mymatrix) <- LETTERS[1:6]
+colnames(mymatrix) <- LETTERS[7:12]
+```
+
+```{r}
+rownames(mymatrix)
+```
+
+```{r}
+colnames(mymatrix)
+```
+
+```{r}
+mymatrix
+```
+
+We can also convert a matrix to a dataframe. 
+
+```{r}
+mymatrixdf <- as.data.frame(mymatrix)
+class(mymatrixdf)
+```
+
+## Arrays
+
+Arrays allow us to name dimensions. Type the following and see if you can surmise what's happening.
+
+```{r}
+myarray <- array(1:42, dim = c(7, 3, 2), 
+                 dimnames = list(c("tiny", "small", "medium", "medium-ish", "large", "big", "huge"), 
+                                 c("slow","moderate","fast"),
+                                 c("boring", "fun")))
+class(myarray)
+```
+
+```{r}
+myarray
+```
+
+```{r}
+dimnames(myarray)
+```
+
+## Lists
+
+Lists are arbitrary collections of objects. The objects do not need to be of the same type, element, or dimension. 
+
+```{r}
+mylist <- list(mat = mymatrix, arr = myarray, date = mydate)
+class(mylist)
+```
+
+```{r}
+length(mylist)
+```
+
+```{r}
+names(mylist)
+```
+
+```{r}
+# Print a list
+str(mylist)
+```
+
+Accessing data within lists can be done through one of R's object classification schemes. Typically you will use either `$` or `[[]]` to extract elements from the list. 
+
+```{r}
+mylist$arr
+```
+
+```{r}
+mylist[[1]][1, 3]
+
+# Where are we getting the object in the first row from?
+```
+
+All of these data types and structures (matrices, lists, and arrays) are useful for generating reports, conducting data analysis, or looking at objects across types. One tip is to use the `attributes` function to learn about the object. 
+
+```{r}
+attributes(mylist)
+```
+
+```{r}
+attributes(myarray)[1:2][2]
+```

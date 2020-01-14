@@ -5,6 +5,8 @@ output:
   blogdown::html_page:
     template: ../pandoc/toc-title_html.template
     toc: true
+bibliography: ../static/bib/references.bib
+csl: ../static/bib/chicago-syllabus-no-bib.csl
 ---
 
 # General Motivation
@@ -28,3 +30,26 @@ output:
 - [RStudio](http://rstudio.com). An IDE for R. The most straightforward way to use R and RMarkdown.
 - [Git](http://git-scm.org). A version control system for your work. 
 - [GitHub](http://github.com). Host public Git repositories for free. Pay to host private ones. Educational plans available for free. Also a source for publicly available code (e.g. R packages and utilities) written by other people.
+
+# Extra Resources
+- [Data Analysis with Dr Mike Pound](https://www.youtube.com/playlist?list=PLzH6n4zXuckpfMu_4Ff8E7Z1behQks5ba). A Computerphile YouTube series on doing data analysis with R.
+
+# Readings
+
+- [@battle-baptiste18:_w]
+- [@berger72:_ways_seein]
+- [@berinato16:_good_chart]
+- [@bertin10:_semiol_graph]
+- [@cairo16:_truth_art]
+- [@cleveland1994]
+- [@field18:_cartog]
+- [@few09:_now_you_see_it]
+- [@lima14:_book_trees]
+- [@lupton10:_think_type]
+- [@munzer14:_visual_analy_desig]
+- [@tufte83:_visual_displ_quant_infor]
+- [@ware08:_visual_think_desig]
+- [@yau11:_visual_this]
+- [@wickhamgrolemund:2017]
+
+

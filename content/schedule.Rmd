@@ -5,4 +5,8 @@ slug: schedule
 
 ---
 
+The schedule covers seven sessions between February and April. The sessions are designed to be modular, so if you don't prefer to attend the orientation and setup session, for example, you can skip it and still keep on track with the other sessions.
+
+Almost all of the sessions come with readings, interactive worksheets, and extra exercises. *The readings should be completed before the session they're assigned to*. I will be making assumptions about prior knowledge based on the readings, so please try to complete them ahead of time. The worksheets are used during the sessions, and exercises are provided for you to work on at your leisure.
+
 `r blogdown::shortcode("schedule")`

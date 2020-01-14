@@ -1,15 +1,12 @@
-SSH_USER = kjhealy@kjhealy.co
-DOCUMENT_ROOT = ~/public/visualizingsociety.com/public_html
-PUBLIC_DIR = public/
-PREFIX = /Users/kjhealy/.pandoc
-BIB = /Users/kjhealy/Documents/bibs/socbib-pandoc.bib
-CSL = apsa
+PREFIX = /Users/jheppler/.pandoc
+BIB = /Users/jheppler/Dropbox/acad/bib/master.bib
+CSL = chicago
 OUTPUTDIR = public_html
 HTML_FILES := $(patsubst %.Rmd, %.html ,$(wildcard *.Rmd))
 
 .PHONY : all
 
-all: deploy
+all: serve
 
 clean:
 	rm -rf public/
@@ -20,6 +17,3 @@ build:
 
 serve: build
 	Rscript -e "blogdown::serve_site()"
-
-deploy:	build
-	rsync --exclude='.DS_Store' -Prvzce 'ssh -p 22' $(PUBLIC_DIR) $(SSH_USER):$(DOCUMENT_ROOT) --delete-after
