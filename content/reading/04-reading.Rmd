@@ -6,3 +6,23 @@ date: "2020-03-03"
 ## Objective
 
 The visualization of data allows us to communicate effectively, spot patterns in large datasets, or simply look for issues with the underlying data. This workshop introduces best practices and principles for data visualization, and works hands-on with the ggplot library from the tidyverse. 
+
+## The Grammar of Graphics
+
+We'll be using the `ggplot2` library from the `tidyverse` for making graphics. The package is based off Leland Wilkinson's "grammar of graphics" principles, which argues for a layering of graphical elements. The basic idea behind the grammar of graphics is to specify the layers or building blocks of a graphic. In `ggplot`, that includes things like: 
+
+- data
+- aesthetic mappings (color, shape, etc.)
+- geometric objects (bar, scatter, line, etc.) (try `help.search("geom_", package = "ggplot2))
+- statistical transformations
+- scales
+- coordinate systems
+- faceting
+
+R comes with its own `plot()` function, but it's not particularly good looking, nor do we have much control about its appearance. `ggplot` gives us more control over the appearance of a graphic, as well as giving us a reasoned grammar behind how and why it's structured the way it is.
+
+## Readings
+
+- [ggplot2 documentation](https://ggplot2.tidyverse.org)
+- Hadley Wickham, "[A layered grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.html)," *Journal of Computational and Graphical Statistics* 19:1 (2010): 3-28.
+- Hadley Wickham, *[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org)*

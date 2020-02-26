@@ -7,4 +7,24 @@ date: "2020-02-25"
 
 Do you work with data that often needs cleaning up? Do you have a need to summarize or aggregate data within one source, or among multiple sources? This workshop introduces the dplyr and tidyr methods from the tidyverse library. 
 
-*More to come.*
+## The Grammar of Data Manipulation
+
+Within the Tidyverse are two essential functions for working with data: `dplyr` and `tidyr`. 
+
+- `select()`: select columns
+- `filter()`: select rows on conditions 
+- `mutate()`: create new columns by using data inside a data frame
+- `group_by()` and `summarize()`: summary statistics on grouped data
+- `arrange()`: sort results
+- `count()` count discrete values 
+
+## Split-apply-combine data analysis
+
+A very common method for doing data analysis is called *split-apply-combine*: split data into groups, apply analysis to each group, and combine the results. `dplyr` makes this very easy using the `group_by()` function. 
+
+- Hadley Wickham, "[The split-apply-combine strategy for data analysis](http://vita.had.co.nz/papers/plyr.html)," *Journal of Statistical Software* 40, 1 (2011): 1--29.
+
+## Readings
+
+- [A Grammar of Data Manipulation](https://dplyr.tidyverse.org)
+- [Introduction to dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
