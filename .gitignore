@@ -10,3 +10,4 @@ static/**/*.zip
 static/rmarkdown-libs/
 content/**/*.html
 _planning/
+rsync-excludes
