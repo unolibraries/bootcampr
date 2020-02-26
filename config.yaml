@@ -10,6 +10,7 @@ ignoreFiles:
   - _files$
   - _cache$
   - \.csl$
+  - _planning$
 permalinks:
   post: "/:year/:month/:day/:slug/"
 buildFuture: true

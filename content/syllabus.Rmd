@@ -14,9 +14,6 @@ library(tibble)
 library(pander)
 ```
 
-[^courseinfo]: {-}
-  `r blogdown::shortcode("courseinfo")`
-
 # Objectives
 
 This bootcamp will do two things. First, it will teach you how to use modern tools to create insightful, beautiful, reproducible visualizations of data. Second, you will learn about the theory and practice of efforts to visualize data. We will think about different ways of looking at data, where data comes from, and the implications of chosing to represent it in different ways.
@@ -58,7 +55,7 @@ You will need to install some software first. You can consult the [orientation m
 my_packages <- c("tidyverse", "broom", "gapminder", "GGally", "ggraph", 
                  "ggrepel", "ggridges", "gridExtra", "here", 
                  "maps", "mapproj", "mapdata", "rlang", "scales", 
-                 "survey", "srvyr", "sp", "usethis", "devtools")
+                 "sp", "usethis", "devtools")
 
 install.packages(my_packages, repos = "http://cran.rstudio.com")
 ```
@@ -75,6 +72,6 @@ As the weeks go by, consult the [Schedule Page](/schedule/) for more information
 
 # Policies
 
-- Attendance to all workshops is not required, but be aware that I won't have time during the workshops to help troubleshoot technical issues. If you're running into issues during a workshop, you'll likely need to figure out a solution on your own. If you're running into issues outside of the workshop, please set up an appointment with me and we can troubleshoot together.
+- Attendance to all workshops is not required, but be aware that I won't have time during the workshops to help troubleshoot technical issues. If you're running into issues during a workshop, you'll likely need to figure out a solution on your own or schedule a time to meet with me afterwards. If you're running into issues outside of the workshop, please set up an appointment with me and we can troubleshoot together.
 - Please try and complete the readings in advance of the workshop. 
 - Feel free to bring a laptop to the workshop and use it for note-taking and in-class work. 
