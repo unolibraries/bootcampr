@@ -17,3 +17,9 @@ build:
 
 serve: build
 	Rscript -e "blogdown::serve_site()"
+
+deploy : build 
+	rsync --omit-dir-times --exclude-from=rsync-excludes \
+		--checksum -avz \
+		--itemize-changes \
+		public/ reclaim:~/public_html/courses/bootcampr.2020/ | egrep =v '^\.'
