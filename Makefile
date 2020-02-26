@@ -1,7 +1,7 @@
 PREFIX = /Users/jheppler/.pandoc
 BIB = /Users/jheppler/Dropbox/acad/bib/master.bib
 CSL = chicago
-OUTPUTDIR = public_html
+OUTPUTDIR = public
 HTML_FILES := $(patsubst %.Rmd, %.html ,$(wildcard *.Rmd))
 
 .PHONY : all
@@ -18,8 +18,8 @@ build:
 serve: build
 	Rscript -e "blogdown::serve_site()"
 
-deploy : build 
+deploy:
 	rsync --omit-dir-times --exclude-from=rsync-excludes \
 		--checksum -avz \
 		--itemize-changes \
-		public/ reclaim:~/public_html/courses/bootcampr.2020/ | egrep =v '^\.'
+		public/ reclaim:~/public_html/courses/bootcampr.2020/ | egrep -v '^\.'
