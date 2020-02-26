@@ -1,0 +1,197 @@
+---
+title: "Exercises: Spark Joy with Data"
+date: "2020-02-25"
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Notes from today's workshop are [available on Github](https://github.com/unolibraries/workshops/blob/master/bootcampr/03-tidyr-notes.R).**
+
+## Why dplyr/tidyr?
+
+- Great for data exploration and transformation
+- Intuitive grammar for writing, easy to read when chaining 
+- Operates quickly on data frames
+
+## dplyr functionality 
+
+- `dplyr` has five basic verbs: filter, select, arrange, mutate, summarise. 
+- Works with data in data tables and databases. 
+- Includes joins: inner join, left join, semi-join, anti-join 
+
+Let's look at the dataset called `superfundr`, a data table of Superfund sites in the United States. 
+
+```{r}
+library(tidyverse)
+library(superfundr)
+data(superfunds)
+
+head(superfunds)
+```
+
+## filter()
+
+We can look for specific data from our data frame using `filter()`. 
+
+```{r}
+superfunds %>% 
+  filter(state == "NE")
+```
+
+Don't be thrown off by the pipe operator (`%>%`). What we're doing with this operator is chaining together commands. Think of it as passing along the results of one function immediately to another function. So, in the above code, we're taking the entirety of the superfunds dataset passed into the `filter()` function, which we then apply an argument we want to match and have returned to us. We could continue chaining these together with other functions, which you'll see below.
+
+You can also chain together various arguments. 
+
+```{r}
+# You can use a comma or ampersand to represent AND conditions
+superfunds %>% 
+  filter(state == "NE", county == "DOUGLAS")
+```
+
+## select()
+
+Let's review how to do selections in Base R. If I wanted to grab specific columns using Base R, it would look something like this: 
+
+```{r}
+superfunds[, c("state", "county", "contaminant")]
+```
+
+We can achieve the same using `select()`, which will be easier to read and more self-explanatory: 
+
+```{r}
+superfunds %>%
+  select(state, county, contaminant)
+```
+
+## Chaining
+
+We can chain together multiple functions to perform multiple operations. We use the pipe operator `%>%` to achieve this (this is a special feature of the Tidyverse, not built into Base R). Think of this as "do this, *then* do this, *then* do this." 
+
+```{r}
+superfunds %>% 
+  select(state, county, city, contaminant, fiscal_year) %>% 
+  filter(state == "NE", fiscal_year > 1995)
+```
+
+Chaining like this helps readability when there are a lot of operations being done. We also don't need to just use this with our data frame; we can also use the pipe operator to replace nesting commands in Base R. For example:
+
+```{r}
+# The Base R nested method
+x1 <- 1:5
+x2 <- 2:6
+
+sqrt(sum((x1-x2)^2))
+```
+
+```{r}
+# The dplyr chaining method
+x3 <- 1:5
+x4 <- 2:6
+
+(x3-x4)^2 %>% 
+  sum() %>% 
+  sqrt()
+```
+
+## arrange()
+
+Arrange allows us to sort data in data frames. Of course we can do this in Base R with the `order()` function, like so: 
+
+```{r}
+superfunds[order(superfunds$completion_date), c("state", "site_name", "completion_date")]
+```
+
+But, `dplyr` provides a cleaner way of writing this. 
+
+```{r}
+superfunds %>% 
+  select(state, site_name, completion_date) %>% 
+  arrange(completion_date)
+```
+
+We can also reverse sort using `desc()`. 
+
+```{r}
+superfunds %>% 
+  select(state, site_name, completion_date) %>% 
+  arrange(desc(completion_date))
+```
+
+## mutate()
+
+`mutate()` lets us create new columns of data based on data in our data frame. 
+
+```{r}
+# The Base R way
+superfunds$new_column <- superfunds$fiscal_year + 3
+
+superfunds[, c("state", "site_name", "new_column")]
+```
+
+And the `dplyr` method for cleaner reading: 
+
+```{r}
+# The dplyr way
+superfunds %>% 
+  mutate(new_data = fiscal_year + 3) %>% 
+  select(state, site_name, new_data)
+```
+
+To save those results as a new column, store the result in a new or existing variable. 
+
+```{r}
+superfunds <- superfunds %>% 
+  mutate(new_column = fiscal_year + 3)
+```
+
+## summarise()
+
+The `summarise()` function helps us group together observations. This allows us to do some interesting calculations. We could, for example, count the number of contaminants across all sites.
+
+```{r}
+superfunds %>% 
+  group_by(contaminant) %>% 
+  summarise(count = n()) %>% 
+  arrange(desc(count))
+```
+
+We could simplify this a bit by using the `tally()` function.
+
+```{r}
+superfunds %>% 
+  group_by(contaminant) %>% 
+  tally(sort = TRUE)
+```
+
+## Other useful convenience functions
+
+```{r}
+# Randomly sample a fixed number of rows.
+superfunds %>% sample_n(5)
+```
+
+```{r}
+# Randomly sample a fraction of rows
+superfunds %>% sample_frac(0.25)
+```
+
+```{r}
+# Replace the Base R method of using `str()` to view the structure of an
+# object with dplyr's `glimpse()` function.
+glimpse(superfunds)
+```
+
+## Resources
+
+* [Official dplyr reference manual and vignettes on CRAN](http://cran.r-project.org/web/packages/dplyr/index.html): vignettes are well-written and cover many aspects of dplyr
+* [July 2014 webinar about dplyr (and ggvis) by Hadley Wickham](http://pages.rstudio.net/Webinar-Series-Recording-Essential-Tools-for-R.html) and related [slides/code](https://github.com/rstudio/webinars/tree/master/2014-01): mostly conceptual, with a bit of code
+* [dplyr GitHub repo](https://github.com/hadley/dplyr) and [list of releases](https://github.com/hadley/dplyr/releases)

@@ -1,0 +1,214 @@
+---
+title: "Exercises: Spark Joy with Data"
+date: "2020-02-25"
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Let's dive into some of the features of `ggplot2`. We'll start with some data: world development indicators. 
+
+```{r}
+library(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/unolibraries/bootcampr/master/static/data/wdi.csv", col_types = cols(country = col_character(), year = col_double(), electricity_pop = col_double(), energyuse_pop = col_double(), renewable_energyuse = col_double()))
+```
+
+This is a dataset that has 5,425 observations across five variables. Let's use `str()` to get a sense of what's here. 
+
+```{r}
+str(data)
+```
+
+The dataset describes the following: 
+
+- `year`: the year of the observation
+- `country`: the country of observation
+- `electricity_pop`: access to electricity (% population)
+- `energyuse_pop`: energy use (kg of oil equivalent per capita)
+- `renewables_energyuse`: renewable energy consumption (% of total final energy consumption)
+
+## ggplot2
+
+The `ggplot2` packaged was first developed by Hadley Wickham intending to create a system that allowed programmers to create a graph basced on a data set, a set of visual marks representing data points, and a coordinate system. A the most basic, `ggplot2` looks something like this: 
+
+```{r, eval = FALSE}
+# Note that ggplot uses an addition symbol to combine the layers, not a pipe.
+ggplot(data = <DATA>, aes(x = <X>, y = <Y>, color = <COLOR>)) +
+  geom_<TYPE>()
+```
+
+To break this down slightly:
+
+- `ggplot()` is our function to initiate `ggplot2`
+- `data` specifies the data frame we're using to create a plot 
+- `aes()` is short for *aesthetics*, and handles the **aesthetic mapping** for graphical elements. This typically includes `x` and `y` coordinates, but also can indicate things like color, linetypes, and others. (As always, see `?ggplot2` for more).
+- `geom()` refers to the geometric object to be used. Some common ones include `geom_bar()`, `geom_line()`, `geom_boxplot()`, `geom_histogram()`, `geom_point()`.
+
+To get a full sense of everything `ggplot` can do, [see the `ggplot2` cheat sheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). 
+
+Let's look at a few geoms to see how they're made. 
+
+### `histogram()`
+
+The `geom_histogram()` produces a distribution of continuous variables. We can look at the underlying data if we'd like:
+
+```{r}
+summary(data$electricity_pop)
+```
+
+So, let's make a graph! 
+
+```{r}
+ggplot(data, aes(x = electricity_pop)) +
+  geom_histogram()
+```
+
+Can you make sense of this graph? What is on the x-axis? What's the y-axis? What specifies the width of the bar? Can you change the width of those bars? What conclusions can you draw from this graphic? 
+
+We could change the width of the bins to try and see if this is a little more readable. By default, `ggplot` uses a with of 30, which means it tries to represent the entire range of variables (0 to 100, in this case) with thirty equally spaced bins. Let's try specifying 5 bins. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_histogram(bins = 5)
+```
+
+### `geom_density()`
+
+We can see above that adjusting the number of bins can run the risk of too little or too much variation, making it difficult to draw conclusions on the overall distribution. We can try another track and use density instead. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_density()
+```
+
+Note that `geom_density()` closes the loop on the polygon (hence the line along the 0). We can get around that using `geom_line()` and specifying a density parameter. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density")
+```
+
+### Graph appearance
+
+We have available in `ggplot2` several arguments for adding labels and titles using the `labs()` argument. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density") +
+  labs(title = "Distribution of access to electricity across all countries",
+       subtitle = "Data source: World Development Indicators",
+       x = "Percentage of the population with access to electricity",
+       y = "Density")
+```
+
+### Changes to color
+
+Any changes to color in the graphic happen at the geometric object itself. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density", color = "steelblue") +
+  labs(title="Distribution of access to electricity across all countries")
+```
+
+You can also pass in hexidecimal or RGB strings to specify colors. 
+
+### Changing the line type and width
+
+Line types can be changed using the `linetype` parameter.  For an overview on the line types, see [the ggplot2 documentation](http://sape.inf.usi.ch/quick-reference/ggplot2/linetype).
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density", linetype = "dotdash")
+```
+
+We can also change the width of a line by specifying `size` in the geom. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density", size = 2)
+```
+
+And if you need to add clarity to a graphic, such as revealing stacked points or data that lies underneath another graphical element, you can adjust the opacity using `alpha`. Alpha ranges from 0 to 1, so an alpha setting of 0.5 sets the opacity at 50%.
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density", alpha = 0.5, size = 2, color = "steelblue")
+```
+
+## Graphing across groups 
+
+There are lots of ways we can compare the data in our data frame. Suppose we want to see how the distribution of access to electricity changes over time? We can pass this argument to `ggplot` and visualize these changes over time and allow us to easily compare the data. 
+
+```{r}
+ggplot(data, aes(electricity_pop, color = factor(year))) +
+  geom_line(stat = "density")
+```
+
+Note that the argument for the color is happening *inside* the `aes()` call, but you can also set the color *outside* the `aes()` call. 
+
+- inside `aes()`, the color parameter sets different colors to each value of a variable that's passed to the parameter. 
+- outside `aes()`, the color argument passes a color to *all* geometric objects of the same type. 
+
+We can also set our own color scale using the `scale_color_manual()` argument. 
+
+```{r}
+ggplot(data, aes(electricity_pop, color = factor(year))) +
+  geom_line(stat="density") +
+  scale_color_manual(values = c("#8c00ff",
+                                "#ff8c00",
+                                "#00ff8c"),
+                     name = "Year")
+```
+
+We can also do the same for line types by changing the `color = factor(year)` argument to `linetype = factor(year)`. 
+
+## Faceting
+
+Another useful way to compare data is by faceting, to plot each value of a variable within a different panel in the same graphic. You have two options available to you in `ggplot`, `facet_wrap()` and `facet_grid()`. You'll use `facet_grid()` if you are faceting across more than one variable. 
+
+```{r}
+ggplot(data, aes(electricity_pop)) +
+  geom_line(stat = "density") +
+  facet_wrap(~ year)
+```
+
+Of course, this particular graphic isn't particularly useful since we only have data on three years. So, we could filter out just those years and re-plot the data. 
+
+```{r}
+ggplot(data %>% filter(year == 2000 | year == 2010 | year == 2012), aes(electricity_pop)) +
+  geom_line(stat = "density") +
+  facet_wrap(~ year)
+```
+
+## Boxplots
+
+Another method for showing distributions is to use boxplots, which graphs various properties of distributions: 
+
+- the borders of the box plot the 25th and 75th percentile
+- the line within the box denotes the median 
+- the position of vertical lines (whiskers) denote first quartile values minus 1.5 times the quartile range, and the third quartile value plus 1.5 times the interquartile range. 
+- dots denote outliers, if applicable
+
+```{r}
+ggplot(data %>% filter(year == 2000 | year == 2010 | year == 2012), aes(x = factor(year), y = electricity_pop)) +
+  geom_boxplot()
+```
+
+Boxplots can be changed using the standard `color`, `fill`, and `width` arguments. You can also change the orientation of the boxplots using the `coord_flip()` argument, which flips the axes. 
+
+## Saving plots
+
+To save a plot to your computer, we use the `ggsave()` function which can output graphs to a variety of formats, including `.pdf`, `.jpg`, `.tiff`, `.bmp`, or `.eps`. Here, we can save our plot as a `.png` and pass `width` and `height` arguments to control its size, as well as a `dpi` argument to specify its resolution in dots per inch (300 is always a good standard). 
+
+```{r, eval = FALSE}
+ggsave("boxplot.png", width = 6, height = 3, dpi = 300)
+```

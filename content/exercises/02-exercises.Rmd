@@ -3,6 +3,10 @@ title: "Exercises: R Basics / Intro to the Tidyverse"
 date: "2020-02-18"
 editor_options: 
   chunk_output_type: console
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
 ---
 
 Open up RStudio and let's work through a few commands. Most of the below introduces you to base R commands. We'll save the more advanced Tidyverse stuff for the remainder of the workshop.
