@@ -61,8 +61,8 @@ params:
   secondaryColor: "#F9983E"
   credits: >-
   logo:
-    url: /images/unor_hex2.png
-    alt: Visualizing Society
+    url: /images/mav_hex.png
+    alt: R User Group
   meta:
     twitterSite: "@jaheppler"
     twitterCreator: "@jaheppler"

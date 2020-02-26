@@ -55,10 +55,10 @@ You will need to install some software first. You can consult the [orientation m
    To install the tidyverse and some additional useful packages, make sure you have an Internet connection and then launch R Studio. Type the following lines of code at R's command prompt, located in the window named "Console", and hit return. In the code below, the `<-` arrow is made up of two keystrokes, first `<` and then the short dash or minus symbol, `-`.
 
 ```{r, echo=TRUE, eval=FALSE, tidy = FALSE}
-my_packages <- c("tidyverse", "broom", "coefplot", "cowplot",
-                 "gapminder", "GGally", "ggraph", "ggrepel", "ggridges", "gridExtra",
-                 "here", "maps", "mapproj", "mapdata", "MASS", "quantreg",
-                 "rlang", "scales", "survey", "srvyr", "usethis", "devtools")
+my_packages <- c("tidyverse", "broom", "gapminder", "GGally", "ggraph", 
+                 "ggrepel", "ggridges", "gridExtra", "here", 
+                 "maps", "mapproj", "mapdata", "rlang", "scales", 
+                 "survey", "srvyr", "sp", "usethis", "devtools")
 
 install.packages(my_packages, repos = "http://cran.rstudio.com")
 ```

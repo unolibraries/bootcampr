@@ -6,4 +6,6 @@ author: "Jason Heppler"
 [^courseinfo]: {-}
   `r blogdown::shortcode("courseinfo")`
 
+![](images/nebraska.png)
+
 This is the workshop website for BootcampR (Spring 2020), a six-week-long bootcamp introducing faculty, staff, and students to the R language at the [University ef Nebraska at Omaha](https://unomaha.edu). The bootcamp teaches you the how and why of data wrangling and visualization using modern R tools. Learn more by reading the [syllabus](syllabus/) and the [schedule](schedule/).
