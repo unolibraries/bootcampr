@@ -4,40 +4,40 @@ lessons:
     date: "Date"
     header: true
     
-  - title: "Orientation and Setup"
+  - title: "Orientation and Setup | CL 112"
     date: "February 11"
     reading: "01-reading"
     slides: "01-bootcamp-orientation.pdf"
 
-  - title: "R Basics / Intro to the Tidyverse"
+  - title: "R Basics / Intro to the Tidyverse | CL 112"
     date: "February 18"
     worksheet: "https://github.com/unolibraries/workshops/blob/master/bootcampr/02-basic-r.Rmd"
     slides: "02-bootcamp-basics.pdf"
     reading: "02-reading"
     exercise: "02-exercises"
 
-  - title: "Spark Joy with Data (Tidy data in R)"
+  - title: "Spark Joy with Data (Tidy data in R) | CL 232"
     date: "February 25"
     reading: "03-reading" 
     worksheet: "https://github.com/unolibraries/workshops/blob/master/data-manipulation-r/02-data-manipulation-worksheet.Rmd"
     exercise: "03-exercises" 
     slides: "03-bootcamp-tidy.pdf"
 
-  - title: "Making Graphs"    
+  - title: "Making Graphs | CL 232"    
     date: "March 3"
     reading: "04-reading"
     worksheet: "https://github.com/unolibraries/workshops/blob/master/intro-data-viz/r-data-viz-worksheet.Rmd"
     exercise: "04-exercises" 
-    slides:
+    slides: "04-bootcamp-ggplot.pdf"
 
-  - title: "Visualizing Networks"
+  - title: "Visualizing Networks | CL 232"
     date: "March 10"
-    #reading: "05-reading"
+    reading: "05-reading"
     worksheet:
     exercise: 
     slides:
   
-  - title: "Making Maps"
+  - title: "Making Maps | CL 112"
     date: "March 17"
     #reading: "06-reading"
     exercise: 
@@ -45,7 +45,7 @@ lessons:
   - title: "Spring Vacation Mar. 22-29 (no instruction)"
     date: "March 24"
     
-  - title: "Clustering and Classifying"
+  - title: "Clustering and Classifying | CL 112"
     date: "March 31"
     #reading: "07-reading"
     exercise: 
