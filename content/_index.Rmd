@@ -1,5 +1,5 @@
 ---
-title: BootcampR
+title:
 author: "Jason Heppler"
 ---
 

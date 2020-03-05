@@ -1,5 +1,5 @@
 ---
-title: "Exercises: Spark Joy with Data"
+title: "Exercises: Making Graphs"
 date: "2020-02-25"
 editor_options: 
   chunk_output_type: console
@@ -13,6 +13,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+**Answer key from today's workshop are [available on Github](https://github.com/unolibraries/workshops/blob/master/bootcampr/04-ggplot-answers.Rmd).**
 
 Let's dive into some of the features of `ggplot2`. We'll start with some data: world development indicators. 
 
@@ -204,6 +206,60 @@ ggplot(data %>% filter(year == 2000 | year == 2010 | year == 2012), aes(x = fact
 ```
 
 Boxplots can be changed using the standard `color`, `fill`, and `width` arguments. You can also change the orientation of the boxplots using the `coord_flip()` argument, which flips the axes. 
+
+## Working with Census Data
+
+One thing I wanted to point out is the ability to pull in data from the Census Bureau. Thanks to the `tidycensus` package, we can easily access this information using the Census API. If you haven't before, you'll need to sign up for an API key and set it in your R enviroment before the code below will work. 
+
+```{r, error=FALSE, message=FALSE, warning=FALSE}
+library(tidycensus)
+library(tidyverse)
+
+# If not set, un-comment below and install your Census API key (https://api.census.gov/data/key_signup.html)
+# census_api_key("YOUR KEY HERE", install = TRUE)
+
+get_acs(geography = "metropolitan statistical area/micropolitan statistical area", 
+        variables = "DP03_0021PE", 
+        summary_var = "B01003_001", 
+        survey = "acs1", 
+        year = 2016) %>%
+  filter(summary_est > 2000000) %>%
+  mutate(NAME = gsub("Metro Area", "", NAME)) %>%
+  ggplot(aes(x = estimate, y = reorder(NAME, estimate))) + 
+  geom_point(color = "steelblue", size = 2) + 
+  labs(title = "Percentage of residents who take public transportation to work", 
+       subtitle = "2016 1-year ACS estimates", 
+       y = "", 
+       x = "ACS estimate (percent)", 
+       caption = "Source: ACS Data Profile variable DP03_0021P via the tidycensus R package") +
+  theme_minimal()
+```
+
+## Scraping Twitter 
+
+We can scrape data from Twitter and visualize it using the `rtweet` library. 
+
+```{r, error=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rtweet)
+
+potus <- get_timeline("realDonaldTrump", n = 3200)
+
+potus %>%
+  transmute(creation_date = as.Date(created_at),
+            text = str_remove_all(text, "https://t.co/[A-Za-z\\d]+"),
+            exclamations = str_extract_all(text, "\\!"),
+            exclamations = map_int(exclamations, length),
+            total_chars = nchar(text)) %>%
+  group_by(creation_date) %>%
+  summarise(percent_excl = sum(exclamations) / sum(total_chars)) %>%
+  ggplot(aes(creation_date, percent_excl)) +
+  geom_line(color = "steelblue", size = 1) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(x = NULL, y = "Daily proportion of tweeted characters that are exclamation points",
+       title = "What proportion of @realDonaldTrump's tweets are exclamation points?")
+
+```
 
 ## Saving plots
 
