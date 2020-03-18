@@ -1,0 +1,16 @@
+---
+title: "Exercises: Making Networks"
+date: "2020-03-10"
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
