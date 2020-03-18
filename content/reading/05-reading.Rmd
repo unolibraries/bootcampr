@@ -3,6 +3,8 @@ title: "Visualizing Networks"
 date: "2020-03-10"
 ---
 
+**Notes and exercise from today's workshop [is available on Github](https://github.com/unolibraries/workshops/blob/master/bootcampr/intro-network-notes.R).**
+
 ## Objective
 
 This workshop introduces methods for building network graphs and conducting social network analysis in R. Attendees will work hands-on with the ggraph, network, and ggplot libraries for creating, analyzing, and visualizing networks.

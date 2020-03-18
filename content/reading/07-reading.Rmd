@@ -6,3 +6,5 @@ date: "2020-03-31"
 ## Objective
 
 Do you need ways of summarizing or aggregating data, or have an interest in machine learning methods for the classification of data? This workshop introduces statistical methods for classifying and clustering data in R.
+
+# Workshop canceled due to COVID-19

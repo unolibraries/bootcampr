@@ -3,6 +3,84 @@ title: "Making Maps"
 date: "2020-03-17"
 ---
 
+**Notes from today's workshop is [available on Github](https://github.com/unolibraries/workshops/blob/master/bootcampr/06-maps.R).**
+
 ## Objective
 
 This workshop introduces methods for making maps in R. Leave ArcGIS behind and learn how you can use the sp, ggplot, ggmaps, and related libraries for doing spatial analysis and visualization with R. 
+
+**Spatial geometry types**
+
+type                  description
+------                -----------
+`POINT`               zero-dimensional geometry containing a single point
+`LINESTRING`          sequence of points connected by straight, non-self intersecting line pieces; one-dimensional geometry 
+`POLYGON`             geometry with a positive area (two-dimensional); sequence of points form  closed, non-self intersecting ring
+`MULTIPOINT`          set of points; a MULTIPOINT is simple if no two points in the MULTIPOINT are equal
+`MULTILINESTRING`     set of linestrings
+`MULTIPOLYGON`        set of polygons
+`GEOMETRYCOLLECTION`  set of geometries of any type except GEOMETRYCOLLECTION
+
+A *coordinate reference system* refers to where on the Earth's surface coordinates can be placed, known as CRS for short. This my be a spheroid CRS such as [WGS84](http://wiki.gis.com/wiki/index.php/WGS84), a projected two-dimensional (Cartesian) CRS like a UTM zone or Web Mercator, or a CRS in tree-dimensions. 
+
+For most of our work, we'll be using the `sf` package in R. This is the `simple features` package that allows us to work with datasets of features with attributes. We can read in various kinds of spatial data files; the most common will be [shapefiles](http://wiki.gis.com/wiki/index.php/Shapefile). Using `sf`, we can read in data which will tell us the attributes of the spatial data, including its CRS, bounding box (bbox), geometry, dimensions, and features. 
+
+```{r, eval=FALSE}
+library(sf)
+## Linking to GEOS 3.5.0, GDAL 2.2.2, PROJ 4.8.0
+nc <- st_read("shape/nc.shp", package="sf")
+## Reading layer `nc' from data source `/tmp/RtmpyyGDDF/temp_libpath62aa45ef1e16/sf/shape/nc.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 100 features and 14 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
+## CRS:            4267
+```
+
+`sf` reads in shapefiles as data frames, which means it also extends the data frame with a *geometry* column.
+
+```{r, eval=FALSE}
+class(nc)
+## [1] "sf"         "data.frame"
+```
+
+There are several methods available for working with `sf` objects: 
+
+```{r eval=FALSE}
+methods(class = "sf")
+##  [1] [                     [[<-                  $<-                  
+##  [4] aggregate             as.data.frame         cbind                
+##  [7] coerce                dbDataType            dbWriteTable         
+## [10] identify              initialize            merge                
+## [13] plot                  print                 rbind                
+## [16] show                  slotsFromS3           st_agr               
+## [19] st_agr<-              st_area               st_as_sf             
+## [22] st_bbox               st_boundary           st_buffer            
+## [25] st_cast               st_centroid           st_collection_extract
+## [28] st_convex_hull        st_coordinates        st_crop              
+## [31] st_crs                st_crs<-              st_difference        
+## [34] st_filter             st_geometry           st_geometry<-        
+## [37] st_interpolate_aw     st_intersection       st_intersects        
+## [40] st_is                 st_join               st_line_merge        
+## [43] st_m_range            st_make_valid         st_nearest_points    
+## [46] st_node               st_normalize          st_point_on_surface  
+## [49] st_polygonize         st_precision          st_reverse           
+## [52] st_segmentize         st_set_precision      st_shift_longitude   
+## [55] st_simplify           st_snap               st_sym_difference    
+## [58] st_transform          st_triangulate        st_union             
+## [61] st_voronoi            st_wrap_dateline      st_write             
+## [64] st_z_range            st_zm                 transform            
+## see '?methods' for accessing help and source code
+```
+
+## Leaflet for R
+
+We can create interactive maps using the Leaflet library in R. Leaflet is a popular JavaScript library for interactive maps, and an R package makes it easy to integrate into R. 
+
+- [Leaflet for R documentation](https://rstudio.github.io/leaflet/)
+
+## Readings
+
+- [sf documentation](https://cran.r-project.org/web/packages/sf/sf.pdf)
+- [Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html) 
+- [Introduction to mapping with {sf} & Co.](https://statnmap.com/2018-07-14-introduction-to-mapping-with-sf-and-co/)
