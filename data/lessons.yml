@@ -33,19 +33,20 @@ lessons:
   - title: "Visualizing Networks | CL 232"
     date: "March 10"
     reading: "05-reading"
-    worksheet:
+    worksheet: "https://github.com/unolibraries/workshops/blob/master/bootcampr/intro-networks-starter.R"
     exercise: 
-    slides:
+    slides: "05-bootcamp-networks.pdf"
   
   - title: "Making Maps | CL 112"
     date: "March 17"
-    #reading: "06-reading"
+    reading: "06-reading"
     exercise: 
+    slides: "06-bootcamp-maps.pdf"
   
   - title: "Spring Vacation Mar. 22-29 (no instruction)"
     date: "March 24"
     
   - title: "Clustering and Classifying | CL 112"
     date: "March 31"
-    #reading: "07-reading"
+    reading: "07-reading"
     exercise: 
